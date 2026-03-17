@@ -1,0 +1,20 @@
+<section class="center">
+    <div>
+        <app-user-input-box labelName="Initial investment" [(inputData)]="investment.initialInvestment">
+        </app-user-input-box>
+
+        <app-user-input-box labelName="Annual investment" [(inputData)]="investment.annualInvestment">
+        </app-user-input-box>
+    </div>
+    <div>
+        <app-user-input-box labelName="Expected return" [(inputData)]="investment.expectedReturn">
+        </app-user-input-box>
+
+        <app-user-input-box labelName="Duration" [(inputData)]="investment.duration">
+        </app-user-input-box>
+    </div>
+    <div>
+        <button (click)="onSubmit()">Calculate</button>
+    </div>
+
+</section>
