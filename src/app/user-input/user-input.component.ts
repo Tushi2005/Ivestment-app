@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { UserInputBoxComponent } from './user-input-box/user-input-box.component';
-import { Investment } from '../investment.model';
-import { InvestmentService } from '../investment.service';
+import { Investment } from '../investment/investment.model';
+import { InvestmentService } from '../investment/investment.service';
 
 @Component({
   selector: 'app-user-input',
@@ -11,7 +11,7 @@ import { InvestmentService } from '../investment.service';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-  private investmentService = inject(InvestmentService);
+  constructor(public investmentService: InvestmentService) {}
 
   investment: Investment = {
     initialInvestment: 0,
@@ -20,8 +20,11 @@ export class UserInputComponent {
     duration: 10
   };
 
+
+
   onSubmit() {
-    const results = this.investmentService.calculateInvestmentResults(this.investment);
-    console.log('Kiszámolt eredmények:', results);
+    this.investmentService.calculateInvestmentResults(this.investment);
+    console.log(this.investmentService.resultsData)
+    this.investmentService.isCalculated = true;
   }
 }

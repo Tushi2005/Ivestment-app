@@ -1,4 +1,4 @@
 <div>
-    <label for="data">{{labelName()}}</label>
-    <input type="number" id="data" [(ngModel)]="inputData">
+    <label [for]="idName()">{{labelName()}}</label>
+    <input type="number" [id]="idName()" [(ngModel)]="inputData">
 </div>

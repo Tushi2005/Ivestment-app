@@ -11,4 +11,5 @@ import { FormsModule } from '@angular/forms';
 export class UserInputBoxComponent {
   inputData = model.required<number>()
   labelName = input.required<string>()
+  idName = input.required<string>()
 }
