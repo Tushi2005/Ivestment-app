@@ -1,8 +1,8 @@
 import { Investment } from "./investment.model";
-import { Injectable, signal} from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { InvestmentResult } from "./investment.model";
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class InvestmentService {
     resultsData = <InvestmentResult[]>([]);
     isCalculated = false
@@ -27,5 +27,15 @@ export class InvestmentService {
             });
         }
         this.resultsData = annualData;
+    }
+
+    validateInvestment(investment: Investment) {
+        const hasNegative = Object.values(investment).some(v => typeof v === 'number' && v < 0);
+
+        if (hasNegative) {
+            alert("Egyik érték sem lehet negatív!");
+            return false;
+        }
+        return true;
     }
 }

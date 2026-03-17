@@ -11,7 +11,8 @@ import { InvestmentService } from '../investment/investment.service';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-  constructor(public investmentService: InvestmentService) {}
+  constructor(public investmentService: InvestmentService) { }
+  isValid = false;
 
   investment: Investment = {
     initialInvestment: 0,
@@ -23,8 +24,10 @@ export class UserInputComponent {
 
 
   onSubmit() {
-    this.investmentService.calculateInvestmentResults(this.investment);
-    console.log(this.investmentService.resultsData)
-    this.investmentService.isCalculated = true;
+    if (this.investmentService.validateInvestment(this.investment)) {
+      this.investmentService.calculateInvestmentResults(this.investment);
+      console.log(this.investmentService.resultsData);
+      this.investmentService.isCalculated = true;
+    }
   }
 }
